@@ -21,8 +21,21 @@ go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 go get -u github.com/golang/protobuf/protoc-gen-go
 
-To compile the .proto file: Execute from root directory,
+To compile the .proto file: Execute from root directory, (make sure that the GOPATH is set appropriately)
 protoc -I api/ \
     -I${GOPATH}/src \
     --go_out=plugins=grpc:api \
     api/api.proto
+
+package install:
+
+go get google.golang.org/grpc
+go get golang.org/x/net/context
+
+build server: (from root directory)
+
+go build -i -v -o ./bin/server ./server/
+
+build client: (from root directory)
+
+go build -i -v -o ./bin/client ./client/
