@@ -1,7 +1,15 @@
-Setting go env variables:
+Dowload go pkg from official go 
+    pkg: gox.xx.linux-amd64.tar.gz
 
+Copy the package to /usr/local
+
+sudo tar -xvf gox.xx.linux-amd64.tar.gz
+
+Set go env variables:
+
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 Install protobuf compiler:
 
