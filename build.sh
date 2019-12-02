@@ -3,9 +3,7 @@ log(){
 }
 
 log "Cleaning bin ..."
-cd ./bin
-rm -rf ./*
-cd ../
+rm -rf ./bin
 log "Done cleaning bin."
 
 log "Building protocol ..."
