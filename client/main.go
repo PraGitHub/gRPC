@@ -2,15 +2,18 @@ package main
 
 import (
 	"../api"
+	"fmt"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"log"
 )
 
 func main() {
+	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds | log.Llongfile)
 	var conn *grpc.ClientConn
+	port := 8080
 
-	conn, err := grpc.Dial(":7777", grpc.WithInsecure())
+	conn, err := grpc.Dial(fmt.Sprintf(":%d", port), grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %s", err)
 	}
