@@ -4,7 +4,6 @@ import (
 	"../api"
 	"fmt"
 	"google.golang.org/grpc"
-
 	"log"
 	"net"
 )
@@ -23,9 +22,10 @@ func main() {
 	log.Println("Listening to port ", port)
 
 	// create a server instance
-	log.Println("Creating server instance")
-	s := api.Server{}
-	log.Println("Done creating server instance")
+	serverName := fmt.Sprintf("gRPC_server_%s", GetRandString(25))
+	log.Println("Creating server instance with the identifier ", serverName)
+	s := api.Server{Name: serverName}
+	log.Println("Done creating server instance with the identifier ", serverName)
 
 	// create a gRPC server object
 	log.Println("Creating gRPC server object")

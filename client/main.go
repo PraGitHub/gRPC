@@ -6,6 +6,7 @@ import (
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"log"
+	"time"
 )
 
 func main() {
@@ -21,10 +22,13 @@ func main() {
 	defer conn.Close()
 
 	c := api.NewPingClient(conn)
-	response, err := c.SayHello(context.Background(), &api.PingMessage{Greeting: "foo"})
-	if err != nil {
-		log.Fatalf("Error when calling SayHello: %s", err)
+	for {
+		clientName := fmt.Sprintf("gRPC_client_%s", GetRandString(25))
+		response, err := c.SayHello(context.Background(), &api.PingMessage{Sender: clientName, Message: fmt.Sprintf("Hi, this is %s", clientName)})
+		if err != nil {
+			log.Fatalf("Error when calling SayHello: %s", err)
+		}
+		log.Printf("Response from %s server: %s", response.Sender, response.Message)
+		time.Sleep(5 * time.Second)
 	}
-
-	log.Printf("Response from server: %s", response.Greeting)
 }

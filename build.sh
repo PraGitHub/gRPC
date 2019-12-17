@@ -22,5 +22,5 @@ go build -i -v -o ./bin/server ./server/
 log "Done building server."
 
 log "Building client ..."
-go build -i -v -o ./bin/client ./client/
+go build -i -v -o ./bin/client ./client/ 
 log "Done building client."

@@ -3,7 +3,8 @@ syntax = "proto3";
 package api;
 
 message PingMessage {
-  string greeting = 1;
+  string sender = 1;
+  string message = 2;
 }
 
 service Ping {
