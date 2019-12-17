@@ -1,17 +1,20 @@
 package main
 
 import (
-	"../api"
 	"fmt"
-	"google.golang.org/grpc"
 	"log"
 	"net"
+
+	"../api"
+	"google.golang.org/grpc"
 )
 
 // main start a gRPC server and waits for connection
 func main() {
 	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds | log.Llongfile)
+
 	port := 8080
+
 	// create a listener on TCP port
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 
